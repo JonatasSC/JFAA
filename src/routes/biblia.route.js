@@ -21,4 +21,13 @@ router.get(
     BibliaController.getVersiculoAleatorioFirstTestament
 );
 
+router.get(
+    '/jfaa/biblia/versiculo/aleatorio/second-testament',
+    cors({
+        origins: '*',
+        methods: ['GET'],
+    }),
+    BibliaController.getVersiculoAleatorioSecondTestament
+);
+
 module.exports = router;
