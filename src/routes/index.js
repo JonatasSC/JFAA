@@ -1,4 +1,4 @@
-const teste = require('./biblia.route');
+const router = require('./biblia.route');
 const cors = require('cors');
 const bodyParser = require('body-parser'); 
 
@@ -11,6 +11,6 @@ module.exports	= (app) => {
         }),
         bodyParser.json(),
         bodyParser.urlencoded({ extended: true }),
-        teste
+        router
     )
 }

@@ -4,12 +4,21 @@ const cors = require('cors');
 const BibliaController = require('../controllers/biblia.controller');
 
 router.get(
-    '/biblia/book',
+    '/jfaa/biblia/versiculo/aleatorio',
     cors({
         origins: '*',
         methods: ['GET'],
     }),
-    BibliaController.getVersiculo
+    BibliaController.getVersiculoAleatorio
+);
+
+router.get(
+    '/jfaa/biblia/versiculo/aleatorio/first-testament',
+    cors({
+        origins: '*',
+        methods: ['GET'],
+    }),
+    BibliaController.getVersiculoAleatorioFirstTestament
 );
 
 module.exports = router;
