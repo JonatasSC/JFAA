@@ -1,19 +1,29 @@
 const express = require("express")
 const routes = require("./src/routes")
 const app = express()
+const path = require("path")
 const port = 3004
 
-async function startServer () {
+app.set('views', path.join(__dirname, 'views'))
+app.use(express.static('assets'))
+app.set('view engine', 'ejs')
+
+
+async function startServer() {
   try {
 
     routes(app)
 
-  app.listen(port, () => {
-    console.log(`Example app listening on port ${port}!`)
-  })
+    app.get('/', (req, res) => {
+      res.render('index', req.query)
+    })
+
+    app.listen(port, () => {
+      console.log(`Example app listening on port ${port}!`)
+    })
 
   } catch (error) {
-    console.error("Erro  ao inicializar o servidor. ",error)
+    console.error("Erro  ao inicializar o servidor. ", error)
   }
 }
 
