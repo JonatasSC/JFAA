@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Online Bible</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+        * {
+            font-family: Ubuntu Mono;
+            font-weight: 400;
+            font-style: italic;
+            text-align: center;
+            justify-items: center;
+        }
+
+        h1 {
+            padding: 50px;
+            font-size: 50px;
+            color: crimson;
+            width: max-content;
+        }
+
+        h2 {
+            font-size: xx-large;
+        }
+
+        h3 {
+            font-size: x-large;
+        }
+
+        button {
+            border: 2px;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 20px;
+            background-color: crimson;
+            color: white;
+        }
+        button:hover {
+            background-color: rgb(230, 75, 106);
+        }
+        .bible {
+            width: 80%;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Gerador de versiculos.</h1>
+    <div class="bible">
+        <h2 id="book_name">
+            <%= versiculo.book_name %>
+        </h2>
+        <h3 id="text">"<%= versiculo.text %>"</h3>
+        - Capítulo <span id="chapter">
+            <%= versiculo.chapter %>
+        </span>, Verso <span id="verse">
+            <%= versiculo.verse %>
+        </span>
+        </p>
+    </div>
+    <div>
+        <button id="generate-btn">
+            Novo
+        </button>
+    </div>
+
+    <script>
+        document.getElementById("generate-btn").addEventListener("click", async function () {
+            try {
+                const response = await fetch('http://localhost:3004/jfaa/biblia/versiculo/aleatorio')
+
+                if (!response.ok) {
+                    console.error("Error when get the response")
+                }
+                
+                const data = await response.json()
+                if (data.status === "OK") {
+                    document.getElementById("book_name").textContent = data.versiculo.book_name
+                    document.getElementById("chapter").textContent = data.versiculo.chapter
+                    document.getElementById("verse").textContent = data.versiculo.verse
+                    document.getElementById("text").textContent = data.versiculo.text
+                } else {
+                    console.log("Error when try get the versicle")
+                }
+
+            } catch (error) {
+                console.error('Internal server error', error)
+            }
+        })
+    </script>
+</body>
+
+</html>
