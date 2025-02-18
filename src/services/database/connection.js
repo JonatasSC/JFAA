@@ -5,7 +5,7 @@ class SqliteConnection {
   static async connect () {
     try {
       const connection = await open({
-        filename: 'C:/Users/jonatas.conceicao/Downloads/JFAA.sqlite',
+        filename: 'C:/Users/jonatas.conceicao/Downloads/BASES SQLite/JFAA.sqlite',
         driver: sqlite3.Database
       })
       console.log('conectado ao banco SQLite')
