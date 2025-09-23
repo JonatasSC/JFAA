@@ -1,11 +1,12 @@
 const sqlite3 = require('sqlite3').verbose()
 const { open } = require('sqlite')
+require("dotenv").config();
 
 class SqliteConnection {
   static async connect () {
     try {
       const connection = await open({
-        filename: 'C:/Users/jonatas.conceicao/Downloads/BASES SQLite/JFAA.sqlite',
+        filename: process.env.BD_PATH,
         driver: sqlite3.Database
       })
       console.log('conectado ao banco SQLite')
