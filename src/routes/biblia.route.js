@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const router = Router();
 const cors = require('cors');
-const BibliaController = require('../controllers/biblia.controller');
+const BibliaController = require('../controllers/Biblia.controller');
 
 router.get(
     '/jfaa/biblia/versiculo/aleatorio',

@@ -3,7 +3,8 @@ const routes = require("./src/routes")
 const app = express()
 const path = require("path")
 const { default: axios } = require("axios")
-const port = 3004
+require("dotenv").config();
+const port = process.env.PORT
 
 app.set('views', path.join(__dirname, 'views'))
 app.use(express.static('assets'))
@@ -34,19 +35,3 @@ async function startServer() {
 }
 
 startServer();
-
-/* app.get('/', (req, res) => {
-    res.send('Hello World!');
-});
-
-app.post('/', function (req, res) {
-    res.send('Got a POST request');
-});
-
-app.put('/user', function (req, res) {
-    res.send('Got a PUT request at /user');
-});
-
-app.delete('/user', function (req, res) {
-    res.send('Got a DELETE request at /user');
-}); */
