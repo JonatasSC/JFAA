@@ -24,7 +24,7 @@ mise install
 
 1. Clone o repositório:
 ```bash
-git clone <seu-repositorio>
+git clone git@github.com:JonatasSC/JFAA.git
 cd JFAA
 ```
 
